@@ -1,7 +1,7 @@
 import { myChart, createGraphWithValues } from './graph.js';
-import { setDayNames, setWeatherDescriptionOfDays, setTemperatureOfDays, setCityProperties } from './set-day-descr-temps.js';
+import { setCityProperties } from './set-day-descr-temps.js';
 import { showVisitedCities } from './visited-cities-functions.js';
-import { cityNameInput, cityImage, showCityName, todaysDate, cityProperties, dayNamesOfWeek, submitBtn } from './variables.js';
+import { cityNameInput, cityImage, cityProperties, dayNamesOfWeek, submitBtn } from './variables.js';
 import fetchCityTemperature5Days from './fetch-temperatures.js';
 import fetchCityImage from './fetch-image.js';
 
