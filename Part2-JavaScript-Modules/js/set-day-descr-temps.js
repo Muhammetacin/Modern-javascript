@@ -1,4 +1,4 @@
-import { cityProperties, dayNamesOfWeek } from "./variables.js";
+import { cityProperties, dayNamesOfWeek, showCityName, todaysDate } from "./variables.js";
 
 export const setDayNames = (today) => {
     let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -40,4 +40,18 @@ export const setWeatherDescriptionOfDays = (weatherDescription) => {
     for(let i = 0; i < dayNamesOfWeek.children.length; i++) {
         dayNamesOfWeek.children[i].children[1].innerHTML = weatherDescription[i + 1];
     }
+};
+
+export const setCityProperties = (responseCityName, responseTemperatureValues, weatherDescription) => {
+    // Set all the weekdays in app correctly according to day
+    setDayNames(todaysDate);
+
+    // Show city name on top
+    showCityName.textContent = responseCityName;
+
+    // Show temperature for all days
+    setTemperatureOfDays(responseTemperatureValues);
+
+    // Show sky description for all days
+    setWeatherDescriptionOfDays(weatherDescription);
 };

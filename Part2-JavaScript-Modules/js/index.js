@@ -1,5 +1,5 @@
 import { myChart, createGraphWithValues } from './graph.js';
-import { setDayNames, setWeatherDescriptionOfDays, setTemperatureOfDays } from './set-day-descr-temps.js';
+import { setDayNames, setWeatherDescriptionOfDays, setTemperatureOfDays, setCityProperties } from './set-day-descr-temps.js';
 import { showVisitedCities } from './visited-cities-functions.js';
 import { cityNameInput, cityImage, showCityName, todaysDate, cityProperties, dayNamesOfWeek, submitBtn } from './variables.js';
 import fetchCityTemperature5Days from './fetch-temperatures.js';
@@ -22,19 +22,19 @@ const resetCityValues = () => {
     cityImage.src = "";
 };
 
-const setCityProperties = (responseCityName, responseTemperatureValues, weatherDescription) => {
-    // Set all the weekdays in app correctly according to day
-    setDayNames(todaysDate);
+// const setCityProperties = (responseCityName, responseTemperatureValues, weatherDescription) => {
+//     // Set all the weekdays in app correctly according to day
+//     setDayNames(todaysDate);
 
-    // Show city name on top
-    showCityName.textContent = responseCityName;
+//     // Show city name on top
+//     showCityName.textContent = responseCityName;
 
-    // Show temperature for all days
-    setTemperatureOfDays(responseTemperatureValues);
+//     // Show temperature for all days
+//     setTemperatureOfDays(responseTemperatureValues);
 
-    // Show sky description for all days
-    setWeatherDescriptionOfDays(weatherDescription);
-};
+//     // Show sky description for all days
+//     setWeatherDescriptionOfDays(weatherDescription);
+// };
 
 const executeInput = () => {
     let inputValue = capitalizeFirstLetter(cityNameInput.value);
