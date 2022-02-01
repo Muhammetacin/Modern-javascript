@@ -22,20 +22,6 @@ const resetCityValues = () => {
     cityImage.src = "";
 };
 
-// const setCityProperties = (responseCityName, responseTemperatureValues, weatherDescription) => {
-//     // Set all the weekdays in app correctly according to day
-//     setDayNames(todaysDate);
-
-//     // Show city name on top
-//     showCityName.textContent = responseCityName;
-
-//     // Show temperature for all days
-//     setTemperatureOfDays(responseTemperatureValues);
-
-//     // Show sky description for all days
-//     setWeatherDescriptionOfDays(weatherDescription);
-// };
-
 const executeInput = () => {
     let inputValue = capitalizeFirstLetter(cityNameInput.value);
     let fetchCity = fetchCityTemperature5Days(inputValue);
