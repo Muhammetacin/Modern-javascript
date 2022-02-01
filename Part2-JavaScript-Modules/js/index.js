@@ -1,8 +1,7 @@
-// import APIkey from './config.js';
-import { UNSPLASH_API_KEY } from './config.js';
 import { myChart, drawGraph } from './graph.js';
 import { showVisitedCities } from './visited-cities-functions.js';
 import fetchCityTemperature5Days from './fetch-temperatures.js';
+import fetchCityImage from './fetch-image.js';
 
 const cityNameInput = document.getElementById('inputField');
 const submitBtn = document.getElementById('submit');
@@ -95,17 +94,10 @@ const createGraphWithValues = (responseTemperatureValues) => {
     drawGraph(dayLabels, temperatures);
 };
 
-const fetchCityImage = async (cityName) => {
-    const url = "https://api.unsplash.com/search/photos?query=" + cityName + "&client_id=" + UNSPLASH_API_KEY;
-    const getImage = await fetch(url).then(response => response.json());
-    
-    cityImage.src = getImage.results[0].urls.regular;
-};
-
 const executeInput = () => {
     let inputValue = capitalizeFirstLetter(cityNameInput.value);
     let fetchCity = fetchCityTemperature5Days(inputValue);
-    fetchCityImage(inputValue);
+    fetchCityImage(inputValue).then(image => cityImage.src = image);
 
     fetchCity.then(cityObject => setCityProperties(cityObject.responseCityName, cityObject.responseTemperatureValues, cityObject.weatherDescription));
     fetchCity.then(cityObject => createGraphWithValues(cityObject.responseTemperatureValues));
