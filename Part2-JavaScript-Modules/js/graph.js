@@ -1,4 +1,9 @@
+import { setDayNames, setTemperatureOfDays } from "./set-day-descr-temps.js";
+
 export let myChart = null;
+
+// Get todays day
+const todaysDate = new Date().getDay();
 
 export const drawGraph = (dayLabels, temperatureData) => {
     const ctx = document.getElementById("myChart").getContext("2d");
@@ -31,4 +36,12 @@ export const drawGraph = (dayLabels, temperatureData) => {
         },
       },
     });
+};
+
+export const createGraphWithValues = (responseTemperatureValues) => {
+  const temperatures = setTemperatureOfDays(responseTemperatureValues);
+  const dayLabels = setDayNames(todaysDate);
+  dayLabels.pop();
+
+  drawGraph(dayLabels, temperatures);
 };

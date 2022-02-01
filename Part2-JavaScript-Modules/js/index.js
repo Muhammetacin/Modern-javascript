@@ -1,17 +1,19 @@
-import { myChart, drawGraph } from './graph.js';
+import { myChart, createGraphWithValues } from './graph.js';
+import { setDayNames, setWeatherDescriptionOfDays, setTemperatureOfDays } from './set-day-descr-temps.js';
 import { showVisitedCities } from './visited-cities-functions.js';
+import { cityNameInput, cityImage, showCityName, todaysDate, cityProperties, dayNamesOfWeek, submitBtn } from './variables.js';
 import fetchCityTemperature5Days from './fetch-temperatures.js';
 import fetchCityImage from './fetch-image.js';
 
-const cityNameInput = document.getElementById('inputField');
-const submitBtn = document.getElementById('submit');
-const cityProperties = document.getElementById('cityProperties');
-const dayNamesOfWeek = document.getElementById('daysOfWeek');
-const showCityName = document.getElementById('inputArea').children[0];
-const cityImage = document.getElementById('cityImg');
+// const cityNameInput = document.getElementById('inputField');
+// const submitBtn = document.getElementById('submit');
+// const cityProperties = document.getElementById('cityProperties');
+// const dayNamesOfWeek = document.getElementById('daysOfWeek');
+// const showCityName = document.getElementById('inputArea').children[0];
+// const cityImage = document.getElementById('cityImg');
 
-// Get todays day
-const todaysDate = new Date().getDay();
+// // Get todays day
+// const todaysDate = new Date().getDay();
 
 const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -30,47 +32,47 @@ const resetCityValues = () => {
     cityImage.src = "";
 };
 
-const setDayNames = (today) => {
-    let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+// const setDayNames = (today) => {
+//     let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-    // Rearrange the array
-    while(today != 0) {
-        let day = daysOfWeek.shift();
-        daysOfWeek.push(day);
-        today--;
-    }
+//     // Rearrange the array
+//     while(today != 0) {
+//         let day = daysOfWeek.shift();
+//         daysOfWeek.push(day);
+//         today--;
+//     }
 
-    // Show correct day names on page
-    for(let i = 0; i < dayNamesOfWeek.children.length; i++) {
-        dayNamesOfWeek.children[i].children[0].innerHTML = daysOfWeek[i + 1];
-    }
+//     // Show correct day names on page
+//     for(let i = 0; i < dayNamesOfWeek.children.length; i++) {
+//         dayNamesOfWeek.children[i].children[0].innerHTML = daysOfWeek[i + 1];
+//     }
 
-    return daysOfWeek;
-};
+//     return daysOfWeek;
+// };
 
-const setTemperatureOfDays = (temperatureData) => {
-    let temperatures = [];
+// const setTemperatureOfDays = (temperatureData) => {
+//     let temperatures = [];
     
-    const todaysTemperature = Math.round(temperatureData[0]);
-    temperatures.push(todaysTemperature);
+//     const todaysTemperature = Math.round(temperatureData[0]);
+//     temperatures.push(todaysTemperature);
 
-    cityProperties.children[2].innerHTML = todaysTemperature + "°";
+//     cityProperties.children[2].innerHTML = todaysTemperature + "°";
     
-    for(let i = 0; i < dayNamesOfWeek.children.length; i++) {
-        dayNamesOfWeek.children[i].children[2].innerHTML = Math.round(temperatureData[i + 1]) + "°";
-        temperatures.push(Math.round(temperatureData[i + 1]));
-    }
+//     for(let i = 0; i < dayNamesOfWeek.children.length; i++) {
+//         dayNamesOfWeek.children[i].children[2].innerHTML = Math.round(temperatureData[i + 1]) + "°";
+//         temperatures.push(Math.round(temperatureData[i + 1]));
+//     }
 
-    return temperatures;
-};
+//     return temperatures;
+// };
 
-const setWeatherDescriptionOfDays = (weatherDescription) => {
-    cityProperties.children[1].innerHTML = weatherDescription[0];
+// const setWeatherDescriptionOfDays = (weatherDescription) => {
+//     cityProperties.children[1].innerHTML = weatherDescription[0];
 
-    for(let i = 0; i < dayNamesOfWeek.children.length; i++) {
-        dayNamesOfWeek.children[i].children[1].innerHTML = weatherDescription[i + 1];
-    }
-};
+//     for(let i = 0; i < dayNamesOfWeek.children.length; i++) {
+//         dayNamesOfWeek.children[i].children[1].innerHTML = weatherDescription[i + 1];
+//     }
+// };
 
 const setCityProperties = (responseCityName, responseTemperatureValues, weatherDescription) => {
     // Set all the weekdays in app correctly according to day
@@ -86,13 +88,13 @@ const setCityProperties = (responseCityName, responseTemperatureValues, weatherD
     setWeatherDescriptionOfDays(weatherDescription);
 };
 
-const createGraphWithValues = (responseTemperatureValues) => {
-    const temperatures = setTemperatureOfDays(responseTemperatureValues);
-    const dayLabels = setDayNames(todaysDate);
-    dayLabels.pop();
+// const createGraphWithValues = (responseTemperatureValues) => {
+//     const temperatures = setTemperatureOfDays(responseTemperatureValues);
+//     const dayLabels = setDayNames(todaysDate);
+//     dayLabels.pop();
 
-    drawGraph(dayLabels, temperatures);
-};
+//     drawGraph(dayLabels, temperatures);
+// };
 
 const executeInput = () => {
     let inputValue = capitalizeFirstLetter(cityNameInput.value);
