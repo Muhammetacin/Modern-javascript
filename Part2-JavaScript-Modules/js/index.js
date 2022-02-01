@@ -1,7 +1,8 @@
-import APIkey from './config.js';
+// import APIkey from './config.js';
 import { UNSPLASH_API_KEY } from './config.js';
 import { myChart, drawGraph } from './graph.js';
-import { showVisitedCities } from './visitedCitiesFunctions.js';
+import { showVisitedCities } from './visited-cities-functions.js';
+import fetchCityTemperature5Days from './fetch-temperatures.js';
 
 const cityNameInput = document.getElementById('inputField');
 const submitBtn = document.getElementById('submit');
@@ -92,38 +93,6 @@ const createGraphWithValues = (responseTemperatureValues) => {
     dayLabels.pop();
 
     drawGraph(dayLabels, temperatures);
-};
-
-const fetchCityTemperature5Days = async (cityName) => {
-    const apiString5Days = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&cnt=40&units=metric&appid=" + APIkey;
-    const response5Days = await fetch(apiString5Days).then(response => response.json());
-
-    if(response5Days.city == undefined) {
-        showCityName.textContent = "City not found";
-        return;
-    }
-
-    const responseCityName = response5Days.city.name;
-
-    const weatherDescription = [
-        response5Days.list[0].weather[0].main,
-        response5Days.list[8].weather[0].main,
-        response5Days.list[16].weather[0].main,
-        response5Days.list[24].weather[0].main,
-        response5Days.list[32].weather[0].main,
-        response5Days.list[39].weather[0].main,
-    ];
-
-    const responseTemperatureValues = [
-        response5Days.list[0].main.temp,
-        response5Days.list[8].main.temp,
-        response5Days.list[16].main.temp,
-        response5Days.list[24].main.temp,
-        response5Days.list[32].main.temp,
-        response5Days.list[39].main.temp,
-    ];
-
-    return { responseCityName, weatherDescription, responseTemperatureValues };
 };
 
 const fetchCityImage = async (cityName) => {
