@@ -5,6 +5,8 @@ import { cityNameInput, cityImage, cityProperties, dayNamesOfWeek, submitBtn } f
 import fetchCityTemperature5Days from './fetch-temperatures.js';
 import fetchCityImage from './fetch-image.js';
 
+import './css/weather.scss';
+
 const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
