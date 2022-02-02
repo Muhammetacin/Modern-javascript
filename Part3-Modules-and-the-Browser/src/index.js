@@ -49,3 +49,6 @@ cityNameInput.addEventListener('keyup', (event) => {
 submitBtn.addEventListener('click', () => {
     executeInput();
 });
+
+console.log("I am using WEBPACK now for my scripts!");
+console.log("OMG I can't believe it!!!");
