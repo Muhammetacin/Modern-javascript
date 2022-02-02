@@ -1,0 +1,30 @@
+{
+  "name": "part5-linters-and-formatters",
+  "version": "1.0.0",
+  "description": "If your code is divided between, say, 8 different files, and you use JavaScript modules, the browser will have to download 8 files instead of one. Moreover, older browsers don't support modules.  \r For this reason (and more) most JavaScript projects these days use something called a **\"bundler\"**.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack watch --mode development",
+    "build": "webpack --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.8.0",
+    "prettier": "2.5.1",
+    "sass": "^1.49.7",
+    "sass-loader": "^12.4.0",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.3"
+  },
+  "dependencies": {
+    "chart.js": "^3.7.0",
+    "css-loader": "^6.5.1",
+    "full-icu": "^1.4.0",
+    "luxon": "^2.3.0",
+    "style-loader": "^3.3.1"
+  }
+}
